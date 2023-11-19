@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\User;
 use DateTime;
@@ -34,19 +36,18 @@ class CartController extends Controller
      */
     public function index()
     {
-   
-        $carts
-
-            = DB::table('carts')
+        $cate = Category::all();
+        $authors = Author::all();
+        $carts = DB::table('carts')
                 ->select('carts.quantity', 'carts.money', 'books.title_book', 'books.book_image', 'carts.id')
                 ->join('books', 'books.id', '=', 'carts.book_id')
                 ->where('carts.user_id','=',  Auth::user()->id )
                 ->get();
-  
-        return view('client.carts.index', ['carts' => $carts]);
+
+        return view('client.carts.index', compact('carts','cate','authors'));
  }
 
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -124,7 +125,8 @@ class CartController extends Controller
     }
     public function checkout(){
 
-     
+        $cate = Category::all();
+        $authors = Author::all();
         $user = $this->user->findOrFail(Auth::user()->id);
         $carts
         = DB::table('carts')
@@ -132,15 +134,15 @@ class CartController extends Controller
         ->join('books', 'books.id', '=', 'carts.book_id')
         ->where('carts.user_id','=',  Auth::user()->id )
         ->get();
-  
-        return view('client.carts.checkout', ['carts'=> $carts, 'user' => $user]);
-      
+
+        return view('client.carts.checkout', compact('carts','user','cate','authors'));
+
     }
 
     public function vnpay_payment(){
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
 $vnp_Returnurl = "http://127.0.0.1:8000/checkout";
-$vnp_TmnCode = "ZXS6CHXE";//Mã website tại VNPAY 
+$vnp_TmnCode = "ZXS6CHXE";//Mã website tại VNPAY
 $vnp_HashSecret = "NHYUIVZYRJANNQZTZYCIFGETKCMLWXRJ"; //Chuỗi bí mật
 
 $vnp_TxnRef = '123'; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
@@ -168,7 +170,7 @@ $inputData = array(
     "vnp_ReturnUrl" => $vnp_Returnurl,
     "vnp_TxnRef" => $vnp_TxnRef
 
-   
+
 );
 
 if (isset($vnp_BankCode) && $vnp_BankCode != "") {
@@ -195,7 +197,7 @@ foreach ($inputData as $key => $value) {
 
 $vnp_Url = $vnp_Url . "?" . $query;
 if (isset($vnp_HashSecret)) {
-    $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
+    $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//
     $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
 }
 $returnData = array('code' => '00'
@@ -203,14 +205,14 @@ $returnData = array('code' => '00'
     , 'data' => $vnp_Url);
     if (isset($_POST['redirect'])) {
         header('Location: ' . $vnp_Url);
-       die(); 
+       die();
     } else {
         echo json_encode($returnData);
     }
 	// vui lòng tham khảo thêm tại code demo
     }
 public function processCheckout(Request $request) {
-  
+
     $dataCreate1['name'] = $request->customer_name;
     $dataCreate1['phone'] = $request->customer_phone;
     $dataCreate1['address'] = $request->customer_address;
@@ -226,9 +228,9 @@ public function processCheckout(Request $request) {
     $this->order->create($dataCreate1);
     // XÓa giở hàng đẵ order
     $cart = $this->cart->getBy2(Auth::user()->id);
-    $cart->delete();      
+    $cart->delete();
     return redirect()->back()->with('success', 'Đặt hàng thành công! Cảm ơn bạn đã mua hàng của shop ♥');
-  
+
 
 }
 }

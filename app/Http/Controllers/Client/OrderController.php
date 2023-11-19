@@ -22,14 +22,8 @@ class OrderController extends Controller
 
     public function show()
     {
-
-        $user = Auth::user();
-        if(Auth::check()){
-            $bills = Order::where('id_customer ', $user->id)->get();
+            $bills = Order::all();
             return view('client.orders.index', compact('bills'));
-        }else{
-            return redirect()->to('/login');
-        }
     }
 
 

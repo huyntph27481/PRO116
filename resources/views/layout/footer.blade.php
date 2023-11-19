@@ -9,8 +9,7 @@
                             <a href="index.html">
                                 <img src="{{ asset('assets/images/logo/3.png') }}" alt="logo">
                             </a>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                have suffered duskam alteration variations of passages</p>
+                           
                         </div>
                         <div class="footer__content">
                             <ul class="social__net social__net--2 d-flex justify-content-center">
@@ -20,14 +19,7 @@
                                 <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
                                 <li><a href="#"><i class="bi bi-youtube"></i></a></li>
                             </ul>
-                            <ul class="mainmenu d-flex justify-content-center">
-                                <li><a href="index.html">Trending</a></li>
-                                <li><a href="index.html">Best Seller</a></li>
-                                <li><a href="index.html">All Product</a></li>
-                                <li><a href="index.html">Wishlist</a></li>
-                                <li><a href="index.html">Blog</a></li>
-                                <li><a href="index.html">Contact</a></li>
-                            </ul>
+                           
                         </div>
                     </div>
                 </div>
@@ -40,8 +32,8 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="copyright">
                         <div class="copy__right__inner text-start">
-                            <p>&copy; 2021, Boighor. Made with <i class="fa fa-heart text-danger"></i> by <a
-                                    href="http://hasthemes.com/" target="_blank">HasThemes</a></p>
+                            <p>&copy;huyntph27481@fpt.edu.vn<i class="fa fa-heart text-danger"></i> by <a
+                                    href="https://github.com/huyntph27481/PRO116" target="_blank">Github</a></p>
                         </div>
                     </div>
                 </div>

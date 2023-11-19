@@ -15,72 +15,18 @@
             <div class="col-lg-8 d-none d-lg-block">
                 <nav class="mainmenu__nav">
                     <ul class="meninmenu d-flex justify-content-start">
-                        <li class="drop with--one--item"><a href="{{ route('home') }}">Home</a>
+                        <li class="drop with--one--item"><a href="{{ route('home') }}">Trang chủ</a>
 
                         </li>
-                        <li class="drop"><a href="#">Shop</a>
-                            <div class="megamenu mega03">
-                                <ul class="item item03">
-                                    <li class="title">Shop Layout</li>
-                                    <li><a href="shop-grid.html">Shop Grid</a></li>
-                                    <li><a href="shop-list.html">Shop List</a></li>
-                                    <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                    <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                    <li><a href="shop-no-sidebar.html">Shop No sidebar</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                </ul>
-                                <ul class="item item03">
-                                    <li class="title">Shop Page</li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="{{ route('cart.index') }}">Cart Page</a></li>
-                                    <li><a href="checkout.html">Checkout Page</a></li>
-                                    <li><a href="wishlist.html">Wishlist Page</a></li>
-                                    <li><a href="error404.html">404 Page</a></li>
-                                    <li><a href="faq.html">Faq Page</a></li>
-                                </ul>
-                                <ul class="item item03">
-                                    <li class="title">Bargain Books</li>
-                                    <li><a href="shop-grid.html">Bargain Bestsellers</a></li>
-                                    <li><a href="shop-grid.html">Activity Kits</a></li>
-                                    <li><a href="shop-grid.html">B&N Classics</a></li>
-                                    <li><a href="shop-grid.html">Books Under $5</a></li>
-                                    <li><a href="shop-grid.html">Bargain Books</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="drop"><a href="{{ route('books.show') }}">Books</a>
-                            <div class="megamenu mega03">
-                                <ul class="item item03">
-                                    <li class="title">Categories</li>
-                                    <li><a href="shop-grid.html">Biography </a></li>
-                                    <li><a href="shop-grid.html">Business </a></li>
-                                    <li><a href="shop-grid.html">Cookbooks </a></li>
-                                    <li><a href="shop-grid.html">Health & Fitness </a></li>
-                                    <li><a href="shop-grid.html">History </a></li>
-                                </ul>
-                                <ul class="item item03">
-                                    <li class="title">Customer Favourite</li>
-                                    <li><a href="shop-grid.html">Mystery</a></li>
-                                    <li><a href="shop-grid.html">Religion & Inspiration</a></li>
-                                    <li><a href="shop-grid.html">Romance</a></li>
-                                    <li><a href="shop-grid.html">Fiction/Fantasy</a></li>
-                                    <li><a href="shop-grid.html">Sleeveless</a></li>
-                                </ul>
-                                <ul class="item item03">
-                                    <li class="title">Collections</li>
-                                    <li><a href="shop-grid.html">Science </a></li>
-                                    <li><a href="shop-grid.html">Fiction/Fantasy</a></li>
-                                    <li><a href="shop-grid.html">Self-Improvemen</a></li>
-                                    <li><a href="shop-grid.html">Home & Garden</a></li>
-                                    <li><a href="shop-grid.html">Humor Books</a></li>
-                                </ul>
-                            </div>
+
+                        <li class="drop"><a href="{{ route('books.show') }}">Sách</a>
+
                         </li>
 
-                        <li class="drop"><a href="#">Pages</a>
+                        <li class="drop"><a href="#">Liên Hệ</a>
                             <div class="megamenu dropdown">
                                 <ul class="item item01">
-                                    <li><a href="about.html">About Page</a></li>
+                                    <li><a href="about.html">Giới thiệu</a></li>
                                     <li class="label2"><a href="portfolio.html">Portfolio</a>
                                         <ul>
                                             <li><a href="portfolio.html">Portfolio</a></li>
@@ -89,17 +35,11 @@
                                             <li><a href="portfolio-details.html">Portfolio Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="{{ route('cart.index') }}">Cart Page</a></li>
-                                    <li><a href="checkout.html">Checkout Page</a></li>
-                                    <li><a href="wishlist.html">Wishlist Page</a></li>
-                                    <li><a href="error404.html">404 Page</a></li>
-                                    <li><a href="faq.html">Faq Page</a></li>
-                                    <li><a href="team.html">Team Page</a></li>
+
                                 </ul>
                             </div>
 
-                        <li><a href="{{route('contact')}}">Contact</a></li>
+
                     </ul>
                 </nav>
             </div>
@@ -109,10 +49,10 @@
                <a class="checkout__btn" href="{{ route('cart.index') }}"><li class="shopcart"></a>
                         <!-- Start Shopping Cart -->
                        <div class="block-minicart minicart__active">
-                         
+
                         </div>
                         <!-- End Shopping Cart -->
-                   
+
                     @if (Auth::check())
                     @if (Auth::user()->role === 1)
                     <li class="setting__bar__icon">
@@ -129,7 +69,7 @@
                                             <span class="currency-trigger"><a href="{{ route('admin') }}">Truy cập trang quản trị</a></span>
                                             <span class="currency-trigger"><a href="{{ route('my.account.detail') }}">Cập nhật tài khoản</a></span>
                                             <span class="currency-trigger"><a href="{{ route('client.order.index') }}">Đơn hàng</a></span>
-                                           
+
                                             <span class="currency-trigger"><a href="{{ route('logout') }}">Đăng xuất</a></span>
                                         </div>
                                     </div>

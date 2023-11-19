@@ -22,9 +22,9 @@ class BookController extends Controller
      */
     public function index()
     {
-
+        $author = Author::all();
         $books = Book::orderBy('id', 'DESC')->search()->paginate(10);
-        return view("admin.books.list", compact("books"));
+        return view("admin.books.list", compact("books",'author'));
 
     }
 
@@ -50,7 +50,7 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-       
+
         $book = new Book;
         $book->title_book = $request->title_book;
         $book->original_price = $request->original_price;
@@ -129,7 +129,7 @@ class BookController extends Controller
     // {
     //     $listCate = Category::all();
     //     $listAuthor = Author::all();
-       
+
 
     //     return view(
     //         "admin.books.edit",
@@ -137,13 +137,13 @@ class BookController extends Controller
     //             'book' => $book,
     //             'listAuthor' => $listAuthor,
     //             'listCate' => $listCate,
-              
+
 
     //         ]
     //     );
     // }
 
-     
+
 
     // public function update(Request $request, Book $book)
     // {
@@ -201,7 +201,7 @@ class BookController extends Controller
     {
         return CategoryController::listCategories();
     }
-   
+
     public function changeImage(Request $request)
     {
         $id = $request->input('id');

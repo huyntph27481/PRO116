@@ -29,7 +29,7 @@
                             <h3 class="widget__title">danh mục sách</h3>
                             <ul>
                                 @foreach ($cate as $cate)
-                                    <li><a href="{{ route('show.bookbyauthor', $cate->id) }}">{{ $cate->cate_Name }}</a></li>
+                                    <li><a href="{{ route('show.bookbycate', $cate->id) }}">{{ $cate->cate_Name }}</a></li>
                                 @endforeach
 
 
@@ -55,7 +55,7 @@
                             <div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
                                 <div class="shop__list nav justify-content-center" role="tablist">
                                     <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-grid"
-                                        role="tab"><i class="fa fa-th"></i></a>
+                                        role="tab"><i class="fa fa-th"></i></a> <h3 class="mb-4">Sản phẩm thuộc danh mục: <span class="text-danger">{{ $category->cate_Name }}</span></h3>
                                    
                                 </div>
                                 
@@ -65,7 +65,7 @@
                     <div class="tab__container tab-content">
                         <div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
                             <div class="row">
-                                @foreach ($datas as $data)
+                                @foreach ($book as $data)
                                     <!-- Start Single Product -->
                                     <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="product__thumb">
@@ -79,8 +79,8 @@
                                         <div class="product__content content--center">
                                             <h4><a href="{{ route('book.detail', $data->id) }}">{{$data->title_book}}</a></h4>
                                             <ul class="price d-flex">
-                                                <li>{{$data->price}} đ</li>
-                                                <li class="old_price">{{$data->original_price}} đ</li>
+                                                <li>{{number_format($data->price, 0, '.', ',') }} đ</li>
+                                                <li class="old_price">{{number_format($data->original_price, 0, '.', ',') }} đ</li>
                                             </ul>
                                             <div class="action">
                                                 <div style=" display: flex;" class="actions_inner">
@@ -108,10 +108,7 @@
                             </div>
 
 
-                        <div class="pagination pagination m-0 float-right">
-                      {{$datas->appends(request()->all())->links()}}
-                        </div>
-
+                        
 
                         </div>
                         

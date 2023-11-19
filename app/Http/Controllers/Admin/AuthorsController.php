@@ -28,7 +28,7 @@ class AuthorsController extends Controller
                 $file = $request->file('author_image');
                 $extention = $file->getClientOriginalName();
                 $filename = $extention;
-                $file->move('storage/hinh/', $filename);
+                $file->move('storage/author/', $filename);
                 $authors->author_image = $filename;
             }
             $authors->save();
@@ -57,7 +57,7 @@ class AuthorsController extends Controller
                 $authors->name_author = $request->name_author;
                 $authors->info = $request->info;
                 if ($request->hasFile('author_image')) {
-                    $image_new = 'storage/hinh/'.$authors->author_image;
+                    $image_new = 'storage/author/'.$authors->author_image;
                     if(File::exists($image_new)){
                         File::delete($image_new);
 
@@ -65,7 +65,7 @@ class AuthorsController extends Controller
                     $file =  $request->file('author_image');
                     $extention = $file->getClientOriginalName();
                     $filename = $extention;
-                    $file->move('storage/hinh',$filename);
+                    $file->move('storage/author',$filename);
                     $authors->author_image = $filename;
 
                 }

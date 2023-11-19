@@ -41,30 +41,27 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th width="60">ID</th>
-                                    <th width="80"></th>
-                                    <th>Title Book</th>
-                                    <th>Price</th>
-                                    <th>Qty</th>
-                                    <th>SKU</th>
-                                    <th width="100">Status</th>
-                                    <th width="100">Action</th>
+                                    <th width="60">Mã</th>
+                                    <th width="80">Ảnh</th>
+                                    <th>Tên sách</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tác giả</th>
+                                    <th width="100">Trạng thái</th>
+                                    <th width="100">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $i = 1;
-
-                                @endphp
+                                
                                 @foreach ($books as $book)
                                     <tr>
-                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $book->id }}</td>
                                         <td><img src="{{ asset('storage/book/' . $book->book_image) }}"
                                                 class="img-thumbnail" width="50"></td>
                                          <td>{{ $book->title_book }}</td>    
-                                        <td>${{ $book->price }}</td>
+                                        <td>{{number_format($book->price, 0, '.', ',') }} đ</td>
                                         <td>{{ $book->quantity }}</td>
-                                        <td>{{ $book->id }}</td>
+                                        <td>{{ $author->find($book->id_author)->name_author }}</td>
                                         <td>
                                             <svg class="text-success-500 h-6 w-6 text-success"
                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

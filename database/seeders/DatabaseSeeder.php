@@ -12,10 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\Category::factory(10)->create();
-        \App\Models\Author::factory(10)->create();
-        \App\Models\Book::factory(10)->create();
+       
 
         \App\Models\User::factory()->create([
             'name' => 'admin',
@@ -24,13 +21,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('1'),
             'role' => '1',
         ]);
-        \App\Models\User::factory()->create([
-            'name' => 'nhanvien',
-            'username' => 'nhanvien',
-            'email' => 'nhanvien@admin.com',
-            'password' => bcrypt('1'),
-            'role' => '2',
-        ]);
+        
         \App\Models\User::factory()->create([
             'name' => 'nguoidung',
             'username' => 'nguoidung',

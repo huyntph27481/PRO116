@@ -32,14 +32,14 @@ Route::get('/admin', function () {
 
 
 //Client
-Route::get('/', function () {
-    return view('index');
-})->name('home');
-// Show book
-Route::get('/show', [ClientBookController::class, 'show'])->name('books.show');
-Route::get('/detail/{id}', [ClientBookController::class, 'detailBook'])->name('book.detail');
-Route::get('view-category/{slug}', [ClientBookController::class, 'viewcategory']);
 
+Route::get('/',[\App\Http\Controllers\Client\HomeController::class, 'show'])->name('home');
+// Show book
+Route::get('/show', [ClientBookController::class, 'index'])->name('books.show');
+Route::get('/detail/{id}', [ClientBookController::class, 'detailBook'])->name('book.detail');
+
+Route::get('/show-book-by-category/{id}', [ClientBookController::class, 'showBooksByCategory'])->name('show.bookbycate');
+Route::get('/show-book-by-author/{id}', [ClientBookController::class, 'showBooksByAuthor'])->name('show.bookbyauthor');
 //contact
 
 Route::get('contact', function () {
@@ -121,6 +121,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     //order
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::match(['get', 'post'], '/order-delete/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'delete'])->name('order.delete');
+    Route::match(['get', 'post'], '/order-edit/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'edit'])->name('order.edit');
 
     // Category
     Route::resource('category', CategoryController::class);
@@ -136,7 +138,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::match(['get', 'post'], '/create-authors', [\App\Http\Controllers\Admin\AuthorsController::class, 'add'])->name('authors.create');
     Route::match(['get', 'post'], '/delete-authors/{id}', [\App\Http\Controllers\Admin\AuthorsController::class, 'delete'])->name('authors.delete');
     Route::match(['get', 'post'], '/edit-authors/{id}', [\App\Http\Controllers\Admin\AuthorsController::class, 'edit'])->name('authors.edit');
-
+    //Review
+    Route::get('/reviews', [\App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('review.index');
+    Route::match(['get', 'post'], '/delete-review/{id}', [\App\Http\Controllers\Admin\ReviewController::class, 'delete'])->name('review.delete');
 });
     // Tìm kiếm sách theo tên sách
     Route::resource('search', SearchController::class);

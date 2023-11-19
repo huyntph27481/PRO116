@@ -40,13 +40,13 @@
                                 @foreach ($carts as $cart)
                                     <tr>
                                         <td class="product-thumbnail"><a href="#"><img
-                                                    src="{{ asset('storage/images/' . $cart->book_image) }}"
+                                                    src="{{ asset('storage/book/' . $cart->book_image) }}"
                                                     alt="product img"></a></td>
 
                                         <td style="padding-top: 20px" class="product-name"><a
                                                 href="#">{{ $cart->title_book }}</a>
                                         </td>
-                                        <td class="product-price"><span class="amount">${{ $cart->money }}</span>
+                                        <td class="product-price"><span class="amount">{{ $cart->money }}đ</span>
                                         </td>
                                         <td class="product-quantity">
 
@@ -64,7 +64,7 @@
                                                     </svg></button>
                                             </form>
                                         </td>
-                                        <td class="product-subtotal">${{ $cart->money * $cart->quantity }}</td>
+                                        <td class="product-subtotal">{{ $cart->money * $cart->quantity }}đ</td>
 
                                         <td class="product-remove">
                                             <a href="{{ route('cart.delete', $cart->id) }}"><i class="fa fa-times"></i></a>
@@ -77,9 +77,7 @@
 
                     <div class="cartbox__btn">
                         <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
-                            <li><a href="#">Coupon Code</a></li>
-                            <li><a href="#">Apply Code</a></li>
-                            <li><a href="#">Update Cart</a></li>
+                           
                             <li><a href="{{ route('cart.checkout') }}">Tiếp tục thanh toán</a></li>
                         </ul>
                     </div>
@@ -99,18 +97,11 @@
                                     $total += $cart->money * $cart->quantity;
                                 @endphp
                             @endforeach
-                            <ul class="cart__total__list">
-                                <li>Cart total</li>
-                                <li>Sub Total</li>
-                            </ul>
-                            <ul class="cart__total__tk">
-                                <li>${{ $total }}</li>
-                                <li>${{ $total }}</li>
-                            </ul>
+                            
                         </div>
                         <div class="cart__total__amount">
-                            <span>Grand Total</span>
-                            <span>${{ $total }}</span>
+                            <span>Tổng cộng</span>
+                            <span>{{ $total }}đ</span>
                         </div>
                     </div>
                 </div>

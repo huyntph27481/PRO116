@@ -60,6 +60,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('review.index') }}" class="nav-link">
+                        <i class="nav-icon  fas fa-users"></i>
+                        <p>Reivew</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('list.authors')}}" class="nav-link">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>Authors</p>

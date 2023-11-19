@@ -45,7 +45,7 @@
                                     <h1 style="font-weight: normal;" >{{ $data->title_book }}</h1>
 
                                     <div class="price-box">
-                                        <span style="color: red;" >{{number_format($data->price, 0, '.', ',') }} đ</span>
+                                        <span style="color: red;" >{{$data->price}} đ</span>
                                     </div>
                                     <div class="product__overview">
                                         <span class="posted_in">Tác giả :
@@ -156,7 +156,9 @@
 
                         </table>
                         <span>Thông tin thêm</span>
-                        {{$data->description}}
+                        @php
+                                            echo $data->description;
+                                        @endphp
 
                     </div>
                 </div>

@@ -21,9 +21,8 @@
         <section class="content">
             <!-- Default box -->
             <div class="container-fluid">
-                <form action="{{route('category.update',$category->id)}}" method="POST" enctype="multipart/form-data" >
+                <form action="{{route('order.edit',$order->id)}}" method="POST" enctype="multipart/form-data" >
                     @csrf
-                    @method('PUT')
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card mb-3">
@@ -31,17 +30,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label for="title">Name Categogy</label>
-                                            <input type="text" onkeyup='ChangeToSlug()' name="cate_Name" id="slug" value="{{ $category->cate_Name }}" class="form-control" placeholder="Name Category">
+                                            <label for="title">Trạng thái đơn hàng</label>
+                                           <select name="status" id="">Trạng thái đơn hàng
+                                            <option value="{{$order->status}}" >{{$order->status}}</option>
+                                            <option value="Đã nhận đơn">Đã nhận đơn</option>
+                                            <option value="Đang giao">Đang giao</option>
+                                            <option value="Hoàn thành">Hoàn thành</option>
+                                           </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="title">Slug</label>
-                                            <input type="text" name="slug" id="convert_slug" value="{{ $category->slug }}" class="form-control" placeholder="Name Categogy">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
