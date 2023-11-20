@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__inner text-center">
-                    <h2 class="breadcrumb-title">Order</h2>
+                    <h2 class="breadcrumb-title">ĐƠN HÀNG CỦA BẠN</h2>
                     <nav class="breadcrumb-content">
                         <a class="breadcrumb_item" href="index.html">Home</a>
                         <span class="brd-separator">/</span>
@@ -21,8 +21,8 @@
 <!-- cart-main-area start -->
 <div class="cart-main-area section-padding--lg bg--white">
     <div class="container">
-        @if (session('message'))
-        <h1 class="text-primary">{{ session('message') }}</h1>
+        @if (session('success'))
+            <h2 style="color:green; width:100%;text-align:center">{{ session('success') }}</h2>
         @endif
         <div class="row">
             <div class="col-md-12 col-sm-12 ol-lg-12">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2023 lúc 11:05 PM
+-- Thời gian đã tạo: Th10 20, 2023 lúc 03:08 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -229,13 +229,6 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `orders`
---
-
-INSERT INTO `orders` (`id`, `name`, `date`, `id_customer`, `address`, `phone`, `email`, `total`, `ship`, `status`, `payment`, `note`, `cart_id`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '2023-11-19', 5, 'nam điền', '0840102038021', 'admin@admin.com', '94', '10', 'Đã nhận đơn', 'Nhận Hàng Thanh Toán', 'dsdsdsds', NULL, '2023-11-19 12:01:11', '2023-11-19 14:41:23');
-
 -- --------------------------------------------------------
 
 --
@@ -450,7 +443,7 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT cho bảng `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
@@ -480,7 +473,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`

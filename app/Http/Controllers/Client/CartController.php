@@ -229,7 +229,7 @@ public function processCheckout(Request $request) {
     // XÓa giở hàng đẵ order
     $cart = $this->cart->getBy2(Auth::user()->id);
     $cart->delete();
-    return redirect()->back()->with('success', 'Đặt hàng thành công! Cảm ơn bạn đã mua hàng của shop ♥');
+    return redirect()->route('client.order.index')->with('success', 'Đặt hàng thành công! Cảm ơn bạn đã mua hàng của shop ♥');
 
 
 }
